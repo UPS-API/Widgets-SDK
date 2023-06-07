@@ -42,15 +42,3 @@ class UPSSDK {
         }
     }
 }
-// Usage example
-$clientId = 'LCyefu5RzXHmGc0BTixPhdcGSqobS6sqtkYdMefP88SAkbMK';
-$clientSecret = 'rfxAerPivnTqxAUE3WQyB1C31URtA4gDcDcaNgG9fZhrPdMQKMRabg2ufa21012H';
-$sessionId = 'abcdefgh';
-
- 
-
-// Using a custom base URL
-$customBaseURL = 'https://onlinetools.ups.com/security/v1/oauth/token';
-$upsSDK = new UPSSDK($clientId, $clientSecret, $customBaseURL);
-$response = $upsSDK->generateToken($sessionId);
-echo $response;
