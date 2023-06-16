@@ -1,5 +1,6 @@
 {
   "name": "ups-api/php-widget-sdk",
+  "version":"1.0.0",
   "type": "library",
   "description": " This SDK will help you generate the access token using PHP . Using this access token you will be able to connect to widgets supported by UPS.",
   "license": "MIT",
