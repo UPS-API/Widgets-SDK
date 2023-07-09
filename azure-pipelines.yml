@@ -27,5 +27,8 @@ steps:
 
 - script: ls $(System.DefaultWorkingDirectory) 
   displayName: 'list working directory'
+
+- script: ls $(Build.SourcesDirectory)
+  displayName: 'list build staging'
   
 - script: ls $(Build.ArtifactStagingDirectory)  
