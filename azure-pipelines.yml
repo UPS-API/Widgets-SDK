@@ -61,12 +61,13 @@ steps:
       !.git/**/*
     SourceFolder: PHP
     TargetFolder: gitrepotogithub
-    preserveTimestamp: true
   
 - script: |
     ls gitrepotogithub 
     cd gitrepotogithub
     git status
+    git chckout main
+    git pull
     git config --global user.email "widgetdev@ups.com"
     git config --global user.name "widget dev"
     git add --all
