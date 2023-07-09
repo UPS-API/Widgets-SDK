@@ -56,7 +56,9 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    Contents: '**'
+    Contents: |
+      **/*
+      !.git/**/*
     SourceFolder: PHP
     TargetFolder: gitrepotogithub
     preserveTimestamp: true
