@@ -64,8 +64,6 @@ steps:
     cd gitrepotogithub
     git status
     git remote -v
-    git remote add upstream 
-    git config --global url."git@github.com:".insteadOf "https://github.com/"
     git config --global user.email "prasadpandari@gmail.com"
     git config --global user.name "prasadpandari"
     git add --all
