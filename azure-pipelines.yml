@@ -61,5 +61,5 @@ steps:
     TargetFolder: gitrepotogithub
     preserveTimestamp: true
   
-- script: ls $(Build.ArtifactStagingDirectory) 
+- script: ls gitrepotogithub 
   displayName: 'list staging directory' 
