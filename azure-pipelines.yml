@@ -61,5 +61,7 @@ steps:
     TargetFolder: gitrepotogithub
     preserveTimestamp: true
   
-- script: ls gitrepotogithub 
+- script: |
+    ls gitrepotogithub 
+    git status
   displayName: 'list staging directory' 
