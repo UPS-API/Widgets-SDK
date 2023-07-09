@@ -22,7 +22,7 @@ variables:
 
 steps:
 - checkout: self
-- checkout: gitrepotogithub
+- checkout: gitrepotogithub -b main
   clean: true
 
 - script: |
