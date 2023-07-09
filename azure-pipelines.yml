@@ -23,6 +23,7 @@ variables:
 steps:
 - checkout: self
 - checkout: gitrepotogithub
+    clean
 
 - script: |
     sudo update-alternatives --set php /usr/bin/php$(phpVersion)
