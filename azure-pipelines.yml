@@ -25,8 +25,9 @@ variables:
   phpVersion: 7.2
 
 steps:
+- checkout: self
 - checkout: gitrepotogithub
-- checkout: php
+
 - script: |
     sudo update-alternatives --set php /usr/bin/php$(phpVersion)
     sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
