@@ -63,8 +63,13 @@ steps:
 - script: |
     cd gitrepotogithub
     git status
-    git remote -v
+    git config --global user.email "prasadpandari@gmail.com"
+    git config --global user.name "prasadpandari"
+    git config --global url."git@github.com:".insteadOf "https://github.com/"
+    git checkout -b main
+    cp -r src\** .
     git add --all
+    git remote -v
     git commit -m "message"
     git push origin HEAD:main --force
   displayName: 'list staging directory' 
