@@ -24,3 +24,8 @@ steps:
 
 - script: composer install --no-interaction --prefer-dist
   displayName: 'composer validate'
+
+- script: ls $(System.DefaultWorkingDirectory) 
+  displayName: 'list working directory'
+  
+- script: ls $(Build.ArtifactStagingDirectory)  
