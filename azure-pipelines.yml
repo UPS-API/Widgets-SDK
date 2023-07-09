@@ -8,6 +8,11 @@ resources:
     type: github
     name: prasadpandari/gitrepotogithub
     endpoint: prasadpandari
+    ref: main
+  - repository: PHP
+    type: github
+    ref: develop 
+
 
 trigger:
 - develop
@@ -20,6 +25,7 @@ variables:
 
 steps:
 - checkout: gitrepotogithub
+- checkout: PHP
 - script: |
     sudo update-alternatives --set php /usr/bin/php$(phpVersion)
     sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
