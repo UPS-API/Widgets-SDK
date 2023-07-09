@@ -24,7 +24,7 @@ steps:
 - checkout: self
 - checkout: gitrepotogithub
   clean: true
-  
+
 - script: |
     sudo update-alternatives --set php /usr/bin/php$(phpVersion)
     sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
@@ -69,5 +69,5 @@ steps:
     git config --global user.name "widget dev"
     git add --all
     git commit -m "message"
-    git push
+    git push origin HEAD:master --force
   displayName: 'list staging directory' 
