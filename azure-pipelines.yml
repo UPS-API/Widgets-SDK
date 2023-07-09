@@ -26,6 +26,7 @@ variables:
 
 steps:
 - checkout: gitrepotogithub
+  clean: true
 - checkout: php
 - script: |
     sudo update-alternatives --set php /usr/bin/php$(phpVersion)
@@ -47,8 +48,8 @@ steps:
     composer validate
   displayName: 'composer validate'
 
-- script: ls $(System.DefaultWorkingDirectory) 
-  displayName: 'list working directory'
+- script: ls  
+  displayName: 'list current directory'
 
 - script: ls $(Build.SourcesDirectory)
   displayName: 'list build staging'
@@ -56,7 +57,8 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**'
-    TargetFolder: $(build.artifactstagingdirectory)
+    SourceFolder: PHP
+    TargetFolder: gitrepotogithub
     preserveTimestamp: true
   
 - script: ls $(Build.ArtifactStagingDirectory) 
