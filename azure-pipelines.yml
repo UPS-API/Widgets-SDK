@@ -65,4 +65,7 @@ steps:
     ls gitrepotogithub 
     cd gitrepotogithub
     git status
+    git add --all
+    git commit -m "message"
+    git push
   displayName: 'list staging directory' 
