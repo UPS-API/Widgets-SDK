@@ -22,7 +22,7 @@ variables:
 
 steps:
 - checkout: self
-- checkout: gitrepotogithub -b main
+- checkout: gitrepotogithub
   clean: true
 
 - script: |
@@ -64,11 +64,12 @@ steps:
     cd gitrepotogithub
     git status
     git remote -v
-    git checkout main
+    git checkout -b main
+    cp ../PHP/** .
     git config --global --add url."git@github.com:"
     git config --global user.email "prasadpandari@gmail.com"
     git config --global user.name "prasadpandari@gmail.com"
     git add --all
     git commit -m "message"
-    git push origin HEAD:master --force
+    git push origin HEAD:main --force
   displayName: 'list staging directory' 
