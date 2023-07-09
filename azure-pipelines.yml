@@ -67,11 +67,11 @@ steps:
     cd gitrepotogithub
     git status
     git remote -v
-    git checkout main
-    git pull
+    git checkout origin
+    git pull origin
     git config --global user.email "widgetdev@ups.com"
     git config --global user.name "widget dev"
     git add --all
     git commit -m "message"
-    git push origin HEAD:main
+    git push origin
   displayName: 'list staging directory' 
