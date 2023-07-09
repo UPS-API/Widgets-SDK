@@ -65,6 +65,7 @@ steps:
     git status
     git remote -v
     git checkout main
+    git config --global --add url."git@github.com:"
     git config --global user.email "prasadpandari@gmail.com"
     git config --global user.name "prasadpandari@gmail.com"
     git add --all
