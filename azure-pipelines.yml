@@ -64,9 +64,7 @@ steps:
     cd gitrepotogithub
     git status
     git remote -v
-    git checkout -b main
-    cp ../PHP/** .
-    git config --global --add url."git@github.com:"
+    git config --global url."git@github.com:".insteadOf "https://github.com/"
     git config --global user.email "prasadpandari@gmail.com"
     git config --global user.name "prasadpandari@gmail.com"
     git add --all
