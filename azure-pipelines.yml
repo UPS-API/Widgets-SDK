@@ -66,7 +66,7 @@ steps:
     ls gitrepotogithub 
     cd gitrepotogithub
     git status
-    git chckout main
+    git checkout main
     git pull
     git config --global user.email "widgetdev@ups.com"
     git config --global user.name "widget dev"
