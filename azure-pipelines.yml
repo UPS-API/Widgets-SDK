@@ -41,8 +41,10 @@ steps:
 
 - script: ls $(Build.SourcesDirectory)
   displayName: 'list build staging'
-  
-- script: composer validate
+
+- script: |
+    cd PHP
+    composer validate
   displayName: 'composer validate'
 
 - script: ls $(System.DefaultWorkingDirectory) 
