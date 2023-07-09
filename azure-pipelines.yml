@@ -36,6 +36,12 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
+- script: ls $(System.DefaultWorkingDirectory) 
+  displayName: 'list working directory'
+
+- script: ls $(Build.SourcesDirectory)
+  displayName: 'list build staging'
+  
 - script: composer validate
   displayName: 'composer validate'
 
