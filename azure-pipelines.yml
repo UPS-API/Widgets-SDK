@@ -9,10 +9,6 @@ resources:
     name: prasadpandari/gitrepotogithub
     endpoint: prasadpandari
     ref: main
-  - repository: php
-    type: git
-    name: PHP
-    ref: develop 
 
 
 trigger:
