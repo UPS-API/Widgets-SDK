@@ -22,7 +22,7 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
-- script: composer install --no-interaction --prefer-dist
+- script: composer validate
   displayName: 'composer validate'
 
 - script: ls $(System.DefaultWorkingDirectory) 
