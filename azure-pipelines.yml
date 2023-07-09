@@ -63,5 +63,6 @@ steps:
   
 - script: |
     ls gitrepotogithub 
+    cd gitrepotogithub
     git status
   displayName: 'list staging directory' 
