@@ -71,5 +71,5 @@ steps:
     git config --global user.name "widget dev"
     git add --all
     git commit -m "message"
-    git push main
+    git push
   displayName: 'list staging directory' 
