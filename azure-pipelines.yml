@@ -58,11 +58,11 @@ steps:
     Contents: |
       **/*
       !.git/**/*
+      !*.yml
     SourceFolder: PHP
     TargetFolder: gitrepotogithub
   
 - script: |
-    ls gitrepotogithub 
     cd gitrepotogithub
     git status
     git remote -v
