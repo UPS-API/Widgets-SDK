@@ -30,5 +30,12 @@ steps:
 
 - script: ls $(Build.SourcesDirectory)
   displayName: 'list build staging'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: $(build.artifactstagingdirectory)
+    preserveTimestamp: true
   
-- script: ls $(Build.ArtifactStagingDirectory)  
+- script: ls $(Build.ArtifactStagingDirectory) 
+  displayName: 'list staging directory' 
