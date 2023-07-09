@@ -65,8 +65,8 @@ steps:
     git status
     git remote -v
     git checkout main
-    git config --global user.email "widgetdev@ups.com"
-    git config --global user.name "widget dev"
+    git config --global user.email "prasadpandari@gmail.com"
+    git config --global user.name "prasadpandari"
     git add --all
     git commit -m "message"
     git push origin HEAD:master --force
