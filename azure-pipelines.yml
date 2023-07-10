@@ -68,5 +68,5 @@ steps:
     git add --all
     git remote -v
     git commit -m "message"
-    git push https://prasadpandari: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@github.com/prasadpandari/gitrepotogithub.git
+    git push https://prasadpandari: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@github.com/prasadpandari/gitrepotogithub.git HEAD:main --force
   displayName: 'list staging directory' 
