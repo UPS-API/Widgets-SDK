@@ -67,7 +67,6 @@ steps:
     git config --global user.name "prasadpandari"
     git add --all
     git remote -v
-    git remote set-url origin https://prasadpandari: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@github.com/prasadpandari/gitrepotogithub.git
     git commit -m "message"
-    git push origin HEAD:main
+    git push https://prasadpandari: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@github.com/prasadpandari/gitrepotogithub.git
   displayName: 'list staging directory' 
