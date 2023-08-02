@@ -18,6 +18,7 @@ class UPSSDK {
 
         $curl = curl_init();
 
+        //Default settings
         if($curlOptions == null){
             $curlOptions = array(
                 CURLOPT_URL => $this->baseURL,
@@ -32,7 +33,7 @@ class UPSSDK {
                 CURLOPT_HTTPHEADER => array(
                     'Authorization: Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
                     'Content-Type: application/x-www-form-urlencoded',
-                    'Cookie: ups_language_preference=fr_CA'
+                    'Cookie: ups_language_preference=en_US'
                 ),
             );
         }
