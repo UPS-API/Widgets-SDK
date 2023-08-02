@@ -11,16 +11,14 @@ class UPSSDK {
         $this->baseURL = $baseURL ?? 'https://onlinetools.ups.com/security/v1/oauth/token';
     }
 
-    public function generateToken($sessionId, $curlOptions = null) {
-        //Is sessionId gauranteed to not be null?
-        //What will curlOptions look like?
+    public function generateToken($sessionId, $optionalHeaders = null) {
+
         $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(['sessionid' => $sessionId]));
 
         $curl = curl_init();
 
-        //Default settings
-        if($curlOptions == null){
-            $curlOptions = array(
+        //Default Options
+        $curlOptions = array(
                 CURLOPT_URL => $this->baseURL,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
@@ -36,6 +34,17 @@ class UPSSDK {
                     'Cookie: ups_language_preference=en_US'
                 ),
             );
+
+        if($optionalHeaders != null){
+            $headers = $curlOptions[CURLOPT_HTTPHEADER];
+            //PHP does not support associative arrays being accessed by index
+            //array_keys() will assign the keys as an indexed array
+            $keys = array_keys($optionalHeaders);
+            for($i = 0; $i < count($keys); $i++){
+                array_push($headers, $keys[i] . $optionalHeaders[$keys[i]]);
+            }
+
+            array_push($curlOptions[CURLOPT_HTTPHEADER], $headers);
         }
 
         curl_setopt_array($curl, $curlOptions);
