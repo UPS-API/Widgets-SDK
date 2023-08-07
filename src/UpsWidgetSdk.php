@@ -11,7 +11,7 @@ class UPSSDK {
         $this->baseURL = $baseURL ?? 'https://onlinetools.ups.com/security/v1/oauth/token';
     }
 
-    public function generateToken($sessionId, $optionalHeaders = null) {
+    public function generateToken($sessionId, $additionalHeaders = null) {
 
         $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(['sessionid' => $sessionId]));
 
@@ -35,16 +35,12 @@ class UPSSDK {
                 ),
             );
 
-        if($optionalHeaders != null){
-            $headers = $curlOptions[CURLOPT_HTTPHEADER];
-            //PHP does not support associative arrays being accessed by index
-            //array_keys() will assign the keys as an indexed array
-            $keys = array_keys($optionalHeaders);
+        //Add Additional Headers
+        if($additionalHeaders != null){
+            $keys = array_keys($additionalHeaders);
             for($i = 0; $i < count($keys); $i++){
-                array_push($headers, $keys[i] . $optionalHeaders[$keys[i]]);
+                array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ": " . $additionalHeaders[$keys[$i]]);
             }
-
-            array_push($curlOptions[CURLOPT_HTTPHEADER], $headers);
         }
 
         curl_setopt_array($curl, $curlOptions);
