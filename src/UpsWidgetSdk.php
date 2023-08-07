@@ -29,7 +29,7 @@ class UPSSDK {
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_POSTFIELDS => $postData,
                 CURLOPT_HTTPHEADER => array(
-                    'Authorization: Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
+                    'Authorization: Basic ' . base64_encode($this->clientId . ': ' . $this->clientSecret),
                     'Content-Type: application/x-www-form-urlencoded',
                     'Cookie: ups_language_preference=en_US'
                 ),
