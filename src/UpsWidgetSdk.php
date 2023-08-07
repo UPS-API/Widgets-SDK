@@ -37,9 +37,16 @@ class UPSSDK {
 
         //Add Additional Headers
         if($additionalHeaders != null){
-            $keys = array_keys($additionalHeaders);
-            for($i = 0; $size = count($keys), $i < $size; $i++){
-                array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ": " . $additionalHeaders[$keys[$i]]);
+
+            if(array_is_list($additionalHeaders)){
+                for($i = 0; $size = count($keys), $i < $size; $i++){
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $additionalHeaders[$i]);
+                }
+            } else {
+                $keys = array_keys($additionalHeaders);
+                for($i = 0; $size = count($keys), $i < $size; $i++){
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ": " . $additionalHeaders[$keys[$i]]);
+                }
             }
         }
 
