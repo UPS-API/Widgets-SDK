@@ -29,7 +29,7 @@ class UPSSDK {
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_POSTFIELDS => $postData,
                 CURLOPT_HTTPHEADER => array(
-                    'Authorization: Basic ' . base64_encode($this->clientId . ': ' . $this->clientSecret),
+                    'Authorization: Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
                     'Content-Type: application/x-www-form-urlencoded',
                     'Cookie: ups_language_preference=en_US'
                 ),
@@ -39,13 +39,13 @@ class UPSSDK {
         if($additionalHeaders != null){
 
             if(array_is_list($additionalHeaders)){
-                for($i = 0; $size = count($keys), $i < $size; $i++){
+                for($i = 0; $size = count($additionalHeaders), $i < $size; $i++){
                     array_push($curlOptions[CURLOPT_HTTPHEADER], $additionalHeaders[$i]);
                 }
             } else {
                 $keys = array_keys($additionalHeaders);
                 for($i = 0; $size = count($keys), $i < $size; $i++){
-                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ": " . $additionalHeaders[$keys[$i]]);
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ': ' . $additionalHeaders[$keys[$i]]);
                 }
             }
         }
