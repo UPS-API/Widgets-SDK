@@ -12,13 +12,13 @@ class UPSSDK {
     }
 
     /**
-     * Generate a token
+     * Generates a token.
      * 
      * @access public
      * @param string $sessionId
      * @param array $customClaims
      * @return string
-    */
+     */
     public function generateToken($sessionId = null, $customClaims = null) {
 
         $curl = curl_init();
