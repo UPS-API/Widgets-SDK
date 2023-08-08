@@ -11,7 +11,7 @@ class UPSSDK {
         $this->baseURL = $baseURL ?? 'https://onlinetools.ups.com/security/v1/oauth/token';
     }
 
-    public function generateToken($sessionId, $additionalHeaders = null) {
+    public function generateToken($sessionId = null, $customClaims = null) { //custom claim    'grant_type=1&custom_claims='
 
         $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(['sessionid' => $sessionId]));
 
@@ -34,16 +34,16 @@ class UPSSDK {
                 ),
             );
 
-        if($additionalHeaders != null){
+        if($customClaims != null){
 
-            if(array_is_list($additionalHeaders)){
-                for($i = 0; $size = count($additionalHeaders), $i < $size; $i++){
-                    array_push($curlOptions[CURLOPT_HTTPHEADER], $additionalHeaders[$i]);
+            if(array_is_list($customClaims)){
+                for($i = 0; $size = count($customClaims), $i < $size; $i++){
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $customClaims[$i]);
                 }
             } else {
-                $keys = array_keys($additionalHeaders);
+                $keys = array_keys($customClaims);
                 for($i = 0; $size = count($keys), $i < $size; $i++){
-                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ':' . $additionalHeaders[$keys[$i]]);
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ':' . $customClaims[$keys[$i]]);
                 }
             }
         }
