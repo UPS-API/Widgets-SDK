@@ -11,6 +11,14 @@ class UPSSDK {
         $this->baseURL = $baseURL ?? 'https://onlinetools.ups.com/security/v1/oauth/token';
     }
 
+    /**
+     * Generate a token
+     * 
+     * @access public
+     * @param string $sessionId
+     * @param array $customClaims
+     * @return string
+    */
     public function generateToken($sessionId = null, $customClaims = null) {
 
         $curl = curl_init();
@@ -18,6 +26,7 @@ class UPSSDK {
         $postData = '';
 
         if($sessionId != null){ //Locator
+
             if($customClaims != null){
                 $claims = array('sessionid' => $sessionId);
                 $size = count($customClaims);
@@ -31,7 +40,12 @@ class UPSSDK {
 
             $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(array('sessionid' => $sessionId)));
         } else { //Returns
-            $postData = 'grant_type=1';
+
+            if($customClaims != null){
+                $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode($customClaims));
+            } else {
+                $postData = 'grant_type=1';
+            }
         }
 
         $curlOptions = array(
