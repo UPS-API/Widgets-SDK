@@ -20,8 +20,6 @@ class UPSSDK {
         if($sessionId != null){ //Locator
             if($customClaims != null){
                 $claims = ['sessionid' => $sessionId];
-                //test
-                echo count($claims);
                 $size = count($customClaims);
                 $keys = array_keys($customClaims);
 
@@ -66,4 +64,3 @@ class UPSSDK {
         }
     }
 }
-
