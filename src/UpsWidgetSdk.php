@@ -11,11 +11,30 @@ class UPSSDK {
         $this->baseURL = $baseURL ?? 'https://onlinetools.ups.com/security/v1/oauth/token';
     }
 
-    public function generateToken($sessionId = null, $customClaims = null) { //custom claim    'grant_type=1&custom_claims='
-
-        $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(['sessionid' => $sessionId]));
+    public function generateToken($sessionId = null, $customClaims = null) {
 
         $curl = curl_init();
+
+        $postData = '';
+
+        if($sessionId != null){ //Locator
+            if($customClaims != null){
+                $claims = ['sessionid' => $sessionId];
+                //test
+                echo count($claims);
+                $size = count($customClaims);
+                $keys = array_keys($customClaims);
+
+                for($i = 0; $i < $size; $i++){
+                    $claims += array($keys[$i] => $customClaims[$keys[$i]]);
+                }
+                $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode($claims));
+            }
+
+            $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(['sessionid' => $sessionId]));
+        } else { //Returns
+            $postData = 'grant_type=1';
+        }
 
         $curlOptions = array(
                 CURLOPT_URL => $this->baseURL,
@@ -33,20 +52,6 @@ class UPSSDK {
                     'Cookie: ups_language_preference=en_US'
                 ),
             );
-
-        if($customClaims != null){
-
-            if(array_is_list($customClaims)){
-                for($i = 0; $size = count($customClaims), $i < $size; $i++){
-                    array_push($curlOptions[CURLOPT_HTTPHEADER], $customClaims[$i]);
-                }
-            } else {
-                $keys = array_keys($customClaims);
-                for($i = 0; $size = count($keys), $i < $size; $i++){
-                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ':' . $customClaims[$keys[$i]]);
-                }
-            }
-        }
 
         curl_setopt_array($curl, $curlOptions);
 
