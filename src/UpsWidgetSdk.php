@@ -19,7 +19,7 @@ class UPSSDK {
 
         if($sessionId != null){ //Locator
             if($customClaims != null){
-                $claims = ['sessionid' => $sessionId];
+                $claims = array('sessionid' => $sessionId);
                 $size = count($customClaims);
                 $keys = array_keys($customClaims);
 
@@ -29,7 +29,7 @@ class UPSSDK {
                 $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode($claims));
             }
 
-            $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(['sessionid' => $sessionId]));
+            $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(array('sessionid' => $sessionId)));
         } else { //Returns
             $postData = 'grant_type=1';
         }
