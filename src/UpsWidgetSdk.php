@@ -21,26 +21,21 @@ class UPSSDK {
      * @return string
      */
     public function generateToken($sessionId = null, $customClaims = null, $additionalHeaders = null) {
-
         $curl = curl_init();
         $postData = '';
 
         if($sessionId != null){ //Locator
-
             if($customClaims != null){
                 $claims = array('sessionid' => $sessionId);
                 $size = count($customClaims);
                 $keys = array_keys($customClaims);
-
                 for($i = 0; $i < $size; $i++){
                     $claims += array($keys[$i] => $customClaims[$keys[$i]]);
                 }
                 $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode($claims));
             }
-
             $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode(array('sessionid' => $sessionId)));
         } else { //Returns
-
             if($customClaims != null){
                 $postData = 'grant_type=1&custom_claims=' . urlencode(json_encode($customClaims));
             } else {
@@ -81,7 +76,6 @@ class UPSSDK {
         }
 
         curl_setopt_array($curl, $curlOptions);
-
         $response = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
