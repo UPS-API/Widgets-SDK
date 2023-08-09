@@ -17,12 +17,12 @@ class UPSSDK {
      * @access public
      * @param string $sessionId
      * @param array $customClaims
+     * @param array $additionalHeaders
      * @return string
      */
-    public function generateToken($sessionId = null, $customClaims = null) {
+    public function generateToken($sessionId = null, $customClaims = null, $additionalHeaders = null) {
 
         $curl = curl_init();
-
         $postData = '';
 
         if($sessionId != null){ //Locator
@@ -49,21 +49,36 @@ class UPSSDK {
         }
 
         $curlOptions = array(
-                CURLOPT_URL => $this->baseURL,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => $postData,
-                CURLOPT_HTTPHEADER => array(
-                    'Authorization: Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
-                    'Content-Type: application/x-www-form-urlencoded',
-                    'Cookie: ups_language_preference=en_US'
-                ),
-            );
+            CURLOPT_URL => $this->baseURL,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => $postData,
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
+                'Content-Type: application/x-www-form-urlencoded',
+                'Cookie: ups_language_preference=en_US'
+            ),
+        );
+
+        //Add Additional Http Headers
+        if($additionalHeaders != null){
+            $size = count($additionalHeaders);
+            if(array_is_list($additionalHeaders)) {
+                for($i = 0; $i < $size; $i++) {
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $additionalHeaders[$i]);
+                }
+            } else {
+                $keys = array_keys($additionalHeaders);
+                for($i = 0; $i < $size; $i++) {
+                    array_push($curlOptions[CURLOPT_HTTPHEADER], $keys[$i] . ':' . $additionalHeaders[$keys[$i]]);
+                }
+            }
+        }
 
         curl_setopt_array($curl, $curlOptions);
 
