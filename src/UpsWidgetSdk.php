@@ -56,14 +56,15 @@ class UPSSDK {
 		}
 		
 		curl_setopt_array($curl, $curlOptions);
-        $response = curl_exec($curl);
+        $data = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
 
         if($error){
             return $error;
         } else {
-            return $response;
+			$response = json_decode($data, true);
+            return $response['access_token'];
         }
 	}
 }
