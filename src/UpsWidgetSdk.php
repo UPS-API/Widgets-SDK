@@ -63,8 +63,22 @@ class UPSSDK {
         if($error){
             return $error;
         } else {
-			$response = json_decode($data, true);
-            return $response['access_token'];
+			if(str_contains($data, 'access_token')) {
+				$response = json_decode($data, true);
+				return $response['access_token'];
+			} else {
+				//return $data;
+				if(str_contains($data, 'Unsupported grant type')) {
+					return 'DTG001: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
+				} else if(str_contains($data, 'Invalid redirect')) {
+					return 'DTG002: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
+				} else if(str_contains($data, 'Authorization Code')) {
+					return 'DTG003: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
+				} else if(str_contains($data, 'Authorization header')) {
+					return 'DTG004: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
+				}
+				return $data;
+			}
         }
 	}
 }
