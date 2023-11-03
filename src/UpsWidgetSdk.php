@@ -68,17 +68,24 @@ class UPSSDK {
 				return $response['access_token'];
 			} else {
 				//return $data;
-				if(str_contains($data, 'Unsupported grant type')) {
-					return 'DTG001: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
-				} else if(str_contains($data, 'Invalid redirect')) {
-					return 'DTG002: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
-				} else if(str_contains($data, 'Authorization Code')) {
-					return 'DTG003: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
-				} else if(str_contains($data, 'Authorization header')) {
-					return 'DTG004: Token generation has encountered an error. Please contact your UPS Relationship Manager.';
+				if(str_contains(strtolower($data), 'grant')) {
+					return $this -> generateError("\"DTG001\"");
+				} else if(str_contains(strtolower($data), 'redirect')) {
+					return $this -> generateError("\"DTG02\"");;
+				} else if(str_contains(strtolower($data), 'authorization code')) {
+					return $this -> generateError("\"DTG003\"");;
+				} else if(str_contains(strtolower($data), 'authorization header')) {
+					return $this -> generateError("\"DTG004\"");;
 				}
 				return $data;
 			}
         }
+	}
+	
+	private function generateError($code) {
+		$initial = "{\"response\":{\"errors\":[{\"code\":";
+		$final = ",\"message\":\"Token generation has encountered an error. Please contact your UPS Relationship Manager.\"}]}}";
+		$message = $initial . $code . $final;
+		return $message;
 	}
 }
