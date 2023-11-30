@@ -67,15 +67,24 @@ class UPSSDK {
 				$response = json_decode($data, true);
 				return $response['access_token'];
 			} else {
-				//return $data;
-				if(str_contains(strtolower($data), 'grant')) {
+				if(str_contains(strtolower($data), 'clientid is invalid')) {
 					return $this -> generateError("\"DTG001\"");
-				} else if(str_contains(strtolower($data), 'redirect')) {
+				} else if(str_contains(strtolower($data), 'missing client id')) {
 					return $this -> generateError("\"DTG02\"");;
-				} else if(str_contains(strtolower($data), 'authorization code')) {
+				} else if(str_contains(strtolower($data), 'client credentials are invalid')) {
 					return $this -> generateError("\"DTG003\"");;
-				} else if(str_contains(strtolower($data), 'authorization header')) {
+				} else if(str_contains(strtolower($data), 'grant')) {
 					return $this -> generateError("\"DTG004\"");;
+				} else if(str_contains(strtolower($data), 'redirect')) {
+					return $this -> generateError("\"DTG05\"");;
+				} else if(str_contains(strtolower($data), 'authorization code')) {
+					return $this -> generateError("\"DTG006\"");;
+				} else if(str_contains(strtolower($data), 'authorization header')) {
+					return $this -> generateError("\"DTG007\"");;
+				} else if(str_contains(strtolower($data), 'quota')) {
+					return $this -> generateError("\"DTG008\"");;
+				} else {
+					return $this -> generateError("\"DTG009\"");;
 				}
 				return $data;
 			}
