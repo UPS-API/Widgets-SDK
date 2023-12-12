@@ -67,7 +67,6 @@ class UPSSDK {
 				$response = json_decode($data, true);
 				return $response['access_token'];
 			} else {
-<<<<<<< HEAD
 				if(str_contains(strtolower($data), "invalid client id")) {
 					throw new Exception($this -> generateError("\"DTG001\""));
 				} else if (str_contains(strtolower($data), "missing client id")) {
