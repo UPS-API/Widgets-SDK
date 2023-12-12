@@ -19,7 +19,7 @@ class UPSSDK {
 			for($i = 0; $i < $size; $i++){
 				$claims += array($keys[$i] => $postData[$keys[$i]]);
 			}
-			$body = 'grant_type=client_credentials&custom_claims=' . urlencode(json_encode($claims));
+			$body = 'grant_type=1&custom_claims=' . urlencode(json_encode($claims));
 		} else {
 			$body = 'grant_type=client_credentials';
 		}
@@ -67,17 +67,25 @@ class UPSSDK {
 				$response = json_decode($data, true);
 				return $response['access_token'];
 			} else {
-				//return $data;
-				if(str_contains(strtolower($data), 'grant')) {
-					return $this -> generateError("\"DTG001\"");
+				if(str_contains(strtolower($data), "invalid client id")) {
+					throw new Exception($this -> generateError("\"DTG001\""));
+				} else if (str_contains(strtolower($data), "missing client id")) {
+					throw new Exception($this -> generateError("\"DTG002\""));
+				} else if (str_contains(strtolower($data), "invalid client credentials")) {
+					throw new Exception($this -> generateError("\"DTG003\""));
+				}else if(str_contains(strtolower($data), 'grant')) {
+					throw new Exception($this -> generateError("\"DTG004\""));
 				} else if(str_contains(strtolower($data), 'redirect')) {
-					return $this -> generateError("\"DTG02\"");;
+					throw new Exception($this -> generateError("\"DTG005\""));
 				} else if(str_contains(strtolower($data), 'authorization code')) {
-					return $this -> generateError("\"DTG003\"");;
+					throw new Exception($this -> generateError("\"DTG006\""));
 				} else if(str_contains(strtolower($data), 'authorization header')) {
-					return $this -> generateError("\"DTG004\"");;
+					throw new Exception($this -> generateError("\"DTG007\""));
+				} else if(str_contains(strtolower($data), 'quota')) {
+					throw new Exception($this -> generateError("\"DTG008\""));
+				} else {
+					throw new Exception($this -> generateError("\"DTG009\""));
 				}
-				return $data;
 			}
         }
 	}
