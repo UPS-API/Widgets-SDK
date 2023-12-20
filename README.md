@@ -19,3 +19,6 @@ This repository will host SDKs that help you generate an OAuth Token to use with
 
 > How do I get a Client Id and a Client Secret?
 - Register on the [UPS Developer Portal]([url](https://developer.ups.com/)https://developer.ups.com/). Follow the steps to onboard and get an id and secret.
+
+
+# Errors
