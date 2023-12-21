@@ -23,6 +23,7 @@ This repository will host SDKs that help you generate an OAuth Token to use with
 
 ## Response Specification
 Successful Token Generation
+
 //A valid and successful response will return an OAuth access token. 
 
 `{
@@ -30,6 +31,7 @@ Successful Token Generation
 }`
 
 Failed Token Generation
+
 //An invalid or erroneous response will throw an exception. The exception will contain a message with an error code and a message with information.
 
 `{
