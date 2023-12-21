@@ -17,3 +17,29 @@ Once the package is added and installed, you will be able to use the `GetToken` 
 
 # GetToken Class
 ## Definition
+
+Provides a class for generating an OAuth token to use with UPS Widgets.
+```C#
+public class GetToken
+```
+
+## Example
+
+```C#
+private string clientId = "YOUR_CLIENT_ID";
+private string clientSecret = "YOUR_CLIENT_SECRET";
+private Dictionary<string, string> headers = new Dictionary<string, string>()
+{
+  { "HEADER_NAME", "HEADER_VALUE" }
+};
+private Dictionary<string, string> body = new Dictionary<string, string>()
+{
+  { "PROPERY_NAME", "PROPERTY_VALUE" }
+};
+private GetToken tokenService = new GetToken();
+
+public void ExampleTokenMethod() {
+  string response = tokenService.GenerateToken(clientId, clientSecret, headers, body);
+  Console.WriteLine(response);
+}
+```
