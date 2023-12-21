@@ -30,7 +30,7 @@ A valid and successful response will return an OAuth access token.
   eyJhZGRyZXNzZXMiOlt7InN0cmVldCI6IjEyMzgw...
 }`
 
-###Failed Token Generation
+### Failed Token Generation
 
 An invalid or erroneous response will throw an exception. The exception will contain a message with an error code and a message with information.
 
