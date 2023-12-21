@@ -1,7 +1,7 @@
 # Widgets-SDK
 This repository will host SDKs that help you generate an OAuth Token to use with Widgets developed by UPS.
 
-# FAQ
+## FAQ
 > Which technologies are supported by UPS?
 - UPS currently has developed SDKs for .Net (6.0). A script for PHP is also available.
 
@@ -21,7 +21,7 @@ This repository will host SDKs that help you generate an OAuth Token to use with
 - Register on the [UPS Developer Portal](https://developer.ups.com/). Follow the steps to onboard and get an id and secret.
 
 
-# Response Specification
+## Response Specification
 Successful Token Generation
 //A valid and successful response will return an OAuth access token. 
 
