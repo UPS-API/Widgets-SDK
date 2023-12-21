@@ -27,7 +27,7 @@ public class GetToken
 
 | Definition | Description |
 |------------|-------------|
-| GetToken() | Initializes a new instance of the GetToken class |
+| `GetToken()` | Initializes a new instance of the GetToken class |
 
 ## Example
 
