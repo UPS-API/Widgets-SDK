@@ -32,7 +32,10 @@ public class GetToken
 ## Methods
 | Definition | Description |
 |------------|-------------|
-| GenerateToken(clientId, clientSecret) | Returns a token using only the provided id and secret |
+| GenerateToken(string, string) | Returns a token using only the provided id and secret |
+| GenerateToken(string, string, Dictionary<string, string>) | Returns a token using the provided id, secret, and additional request headers. |
+| GenerateToken(string, string, null, Dictionary<string, string>) | Returns a token using the provided id, secret, and additional request body properties|
+| GenerateToken(string, string, Dictionary<string, string>, Dictionary<string, string>) | Returns a token using the provided id, secret, additional request headers, and additional requesty body properties |
 
 ## Example
 
