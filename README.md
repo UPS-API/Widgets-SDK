@@ -27,7 +27,12 @@ public class GetToken
 
 | Definition | Description |
 |------------|-------------|
-| `GetToken()` | Initializes a new instance of the GetToken class |
+| GetToken() | Initializes a new instance of the GetToken class |
+
+## Methods
+| Definition | Description |
+|------------|-------------|
+| GenerateToken(clientId, clientSecret) | Returns a token using only the provided id and secret |
 
 ## Example
 
