@@ -23,6 +23,12 @@ Provides a class for generating an OAuth token to use with UPS Widgets.
 public class GetToken
 ```
 
+## Constructors
+
+| Definition | Description |
+|------------|-------------|
+| GetToken() | Initializes a new instance of the GetToken class |
+
 ## Example
 
 ```C#
