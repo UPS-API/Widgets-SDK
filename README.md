@@ -36,6 +36,7 @@ public class GetToken
 | GenerateToken(string, string, Dictionary<string, string>) | Returns a token using the provided id, secret, and additional request headers. |
 | GenerateToken(string, string, null, Dictionary<string, string>) | Returns a token using the provided id, secret, and additional request body properties|
 | GenerateToken(string, string, Dictionary<string, string>, Dictionary<string, string>) | Returns a token using the provided id, secret, additional request headers, and additional requesty body properties |
+| GenerateToken(string, string, Dictionary<string, string>, Dictionary<string, string>, Dictionary<string, string>) | Returns a token using the provided id, secret, additional request headers, additional requesty body properties, and additional query parameters |
 
 ## Example
 
