@@ -60,3 +60,6 @@ public function exampleTokenMethod() {
 }
 ```
 
+## Notes
+
+- Arrays must be associative arrays.
