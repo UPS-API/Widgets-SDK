@@ -1,20 +1,62 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# PHP
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+You can find the UPS Widget Token Generation packagist link [here](https://packagist.org/packages/ups-api/php-widget-sdk). Be sure to use the latest version.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Using the Token Generation Library
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+need to utilize this package.
+- First, copy this composer command `composer require ups-api/php-widget-sdk`.
+- Next, navigate to the root of your app or website.
+- Finally, run the copied composer command. This will include the necessary files to utilize the package.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Once the package is added and installed, you will be able to use the `UPSSDK` class and call the `generateToken` method.
+
+# UPSSDK Class
+## Definition
+
+Provides a class for generating an OAuth token to use with UPS Widgets.
+```PHP
+class UPSSDK
+```
+
+## Constructors
+
+| Definition | Description |
+|------------|-------------|
+| UPSSDK() | Initializes a new instance of the UPSSDK class |
+
+## Parameters
+
+| Definition | Description |
+|------------|-------------|
+| $clientId | Your Client Id found in the UPS Developer portal |
+| $clientSecret | Your Client Secret found in the UPS Developer portal |
+| $headers | An associative `array` of `string => string` |
+| $postData | An associative `array` of `string => string` |
+| $queryParams | An associative `array` of `string => string` |
+
+## Methods
+
+| Definition | Description |
+|------------|-------------|
+| generateToken($clientId, $clientSecret) | Returns a token using only the provided id and secret |
+| generateToken($clientId, $clientSecret, $headers) | Returns a token using the provided id, secret, and additional request headers. |
+| generateToken($clientId, $clientSecret, null, $postData) | Returns a token using the provided id, secret, and additional request body properties|
+| generateToken($clientId, $clientSecret, $headers, $postData) | Returns a token using the provided id, secret, additional request headers, and additional requesty body properties |
+| generateToken($clientId, $clientSecret, $headers, $postData, $queryParams) | Returns a token using the provided id, secret, additional request headers, additional requesty body properties, and additional query parameters |
+
+## Example
+
+```PHP
+$clientId = "YOUR_CLIENT_ID";
+$clientSecret = "YOUR_CLIENT_SECRET";
+$headers = array("HEADER_KEY" => "HEADER_VALUE");
+$postData = array("HEADER_KEY" => "HEADER_VALUE");
+$tokenService = new UPSSDK();
+
+public function exampleTokenMethod() {
+  $response = $tokenService.generateToken($clientId, $clientSecret, $headers, $postData);
+  echo $response;
+}
+```
+
