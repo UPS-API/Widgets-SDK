@@ -34,13 +34,24 @@ A valid and successful response will return an OAuth access token.
 
 An invalid or erroneous response will throw an exception. The exception will contain a message with an error code and a message with information.
 
+#### Errors
+
+| Error Code | Cause | Solution |
+|------------|-------|----------|
+| DTG001 | Invalid Client Id | Ensure the correct Client Id is provided as a `string`. |
+| DTG002 | Missing Client Id | Ensure a Client Id is provided when calling `GenerateToken()`. |
+| DTG003 | Invalid Client Credentials | Ensure the Client Id and Secret are correct and provided as a `string`. |
+| DTG008 | Quota Limit Exceeded | The quota for generating tokens within the given timeframe has been exceeded. Please wait before generating more tokens. |
+
+#### Error Example
+
 `{
   "response":
     {
       "errors":
         [
           {
-            "code":"DTG008",
+            "code":"DTG001",
             "message":"Token generation has encountered an error. Please contact your UPS Relationship Manager."
           }
         ]
