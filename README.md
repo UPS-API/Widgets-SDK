@@ -51,7 +51,7 @@ class UPSSDK
 $clientId = "YOUR_CLIENT_ID";
 $clientSecret = "YOUR_CLIENT_SECRET";
 $headers = array("HEADER_KEY" => "HEADER_VALUE");
-$postData = array("HEADER_KEY" => "HEADER_VALUE");
+$postData = array("PROPERTY_NAME" => "PROPERTY_VALUE");
 $tokenService = new UPSSDK();
 
 public function exampleTokenMethod() {
