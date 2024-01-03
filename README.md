@@ -4,7 +4,7 @@ You can find the UPS Widget Token Generation packagist link [here](https://packa
 
 ## Using the Token Generation Library
 
-need to utilize this package.
+Steps needed to utilize this package.
 - First, copy this composer command `composer require ups-api/php-widget-sdk`.
 - Next, navigate to the root of your app or website.
 - Finally, run the copied composer command. This will include the necessary files to utilize the package.
