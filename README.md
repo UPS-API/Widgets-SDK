@@ -1,20 +1,57 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# GO
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+You can find the UPS Widget Token Generation for GO Lang here.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Using the Token Generation Library
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+need to utilize this package.
+- First, download TokenGeneration.go from this repository. Add the file to your project.
+- Next, install the package by using `go install`.
+- Finally, import the package by using
+  ```GO
+  import {
+        go/TokenGeneration
+  }
+  ```
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Once the package is added and installed, you will be able to use the `UPSSDK` class and call the `generateToken` method.
+
+# TokenGeneration Class
+## Definition
+
+Provides a package for generating an OAuth token to use with UPS Widgets.
+```GO
+package TokenGeneration
+```
+## Parameters
+
+| Definition | Description |
+|------------|-------------|
+| clientId | Your Client Id found in the UPS Developer portal |
+| clientSecret | Your Client Secret found in the UPS Developer portal |
+| headers | A `map` of `[string]string` |
+| postData | A `map` of `[string]string` |
+| queryParams | A `map` of `[string]string` |
+
+## Methods
+
+| Definition | Description |
+|------------|-------------|
+| GenerateToken(clientId, clientSecret) | Returns a token using only the provided id and secret |
+| GenerateToken(clientId, clientSecret, headers) | Returns a token using the provided id, secret, and additional request headers. |
+| GenerateToken(clientId, clientSecret, nil, postData) | Returns a token using the provided id, secret, and additional request body properties|
+| GenerateToken(clientId, clientSecret, headers, postData) | Returns a token using the provided id, secret, additional request headers, and additional requesty body properties |
+| GenerateToken(clientId, clientSecret, headers, postData, queryParams) | Returns a token using the provided id, secret, additional request headers, additional requesty body properties, and additional query parameters |
+
+## Example
+
+```GO
+clientId := "YOUR_CLIENT_ID";
+clientSecret := "YOUR_CLIENT_SECRET";
+headers := make(map[string]string)
+headers["HEADER_KEY"] = "HEADER_VALUE"
+postData := make(map[string]string)
+postData["PROPERTY_NAME"] = "PROPERTY_VALUE"
+
+response, err := TokenGeneration.GenerateToken(clientId, clientSecret, headers, postData, nil)
+```
