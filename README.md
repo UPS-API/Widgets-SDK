@@ -37,10 +37,6 @@ package TokenGeneration
 
 | Definition | Description |
 |------------|-------------|
-| GenerateToken(clientId, clientSecret) | Returns a token using only the provided id and secret |
-| GenerateToken(clientId, clientSecret, headers) | Returns a token using the provided id, secret, and additional request headers. |
-| GenerateToken(clientId, clientSecret, nil, postData) | Returns a token using the provided id, secret, and additional request body properties|
-| GenerateToken(clientId, clientSecret, headers, postData) | Returns a token using the provided id, secret, additional request headers, and additional requesty body properties |
 | GenerateToken(clientId, clientSecret, headers, postData, queryParams) | Returns a token using the provided id, secret, additional request headers, additional requesty body properties, and additional query parameters |
 
 ## Example
