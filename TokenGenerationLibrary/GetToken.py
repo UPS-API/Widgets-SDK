@@ -58,7 +58,7 @@ def generateToken(clientId, clientSecret, headers, postData, queryParams):
         elif "authorization header" in str(response).lower():
             value = __generateError("\"DTG007\"")
         elif "quota" in str(response).lower():
-            value = __generateError("\DTG008\"")
+            value = __generateError("\"DTG008\"")
         else:
             value = __generateError("\"DTG009\"")
             raise Exception(value)
