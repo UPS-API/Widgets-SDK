@@ -11,7 +11,7 @@ Two setup steps are needed to utilize this SDK.
     --password <PASSWORD>`
 - Second, include the package in your project by using the command below.
 
-  `dotnet add package UpsWidgetSdk --version <VERSION>`
+  `dotnet add package DAPWidgets-dotnet-sdk --version 1.0.1`
 
 Once the package is added and installed, you will be able to use the `GetToken` class and call the `GenerateToken` method.
 
