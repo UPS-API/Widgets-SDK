@@ -8,9 +8,9 @@ Two setup steps are needed to utilize this SDK.
 - First, add the package as a dependency in your POM.xml file.
   
   `<dependency>
-  <groupId>com.ups.dap.jwt.provider</groupId>
-  <artifactId>dap-jwt-provider</artifactId>
-  <version>1.0.0</version>
+	<groupId>DAPWidgets</groupId>
+  	<artifactId>java-sdk</artifactId>
+	<version>1.0.0</version>
 </dependency>`
 - Second, install packages by running the following command
 
