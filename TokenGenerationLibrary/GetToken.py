@@ -25,10 +25,10 @@ def generateToken(clientId, clientSecret, headers, postData, queryParams):
             httpHeaders[key] = value
 
     if postData is not None:
-        claims = {}
+        claims = ""
         for key, value in postData.items():
-            claims[key] = value
-        body["&custom_claims"] = urllib.parse.urlencode(claims)
+            claims += "{\"sessionid\":\"" + value + "\"}"
+        body["custom_claims"] = claims
             
     if queryParams is not None:
         for key, value in queryParams.items():
