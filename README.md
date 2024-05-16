@@ -1,39 +1,25 @@
-# GO
+# Go
 
-You can find the UPS Widget Token Generation for GO Lang here.
+You can find the UPS Widget Token Generation for Go programing language here.
 
 ## Using the Token Generation Library
 
 need to utilize this package.
-- First, download TokenGeneration.go from this repository. Add the file to your project.
-- Next, install the package by using `go install`.
-- Finally, import the package by using
-  ```GO
-  import {
-        go/TokenGeneration
-  }
-  ```
+- First, download token_generation.go from this repository. Add the file to your project under `your-project/ups/token_generation.go`
+- Import the `ups` package and start using.
 
-Once the package is added and installed, you will be able to use the `UPSSDK` class and call the `generateToken` method.
+Once the package is added you will be able to use `ups.GenerateToken()` to request an oauth token from UPS.
 
-# TokenGeneration Class
-## Definition
-
-Provides a package for generating an OAuth token to use with UPS Widgets.
-```GO
-package TokenGeneration
-```
 ## Parameters
 
 | Definition | Description |
 |------------|-------------|
-| clientId | Your Client Id found in the UPS Developer portal |
+| clientID | Your Client Id found in the UPS Developer portal |
 | clientSecret | Your Client Secret found in the UPS Developer portal |
-| headers | A `map` of `[string]string` |
+| additionalHeaders | A `map` of `[string]string` |
 | postData | A `map` of `[string]string` |
-| queryParams | A `map` of `[string]string` |
 
-## Methods
+## Funcs
 
 | Definition | Description |
 |------------|-------------|
@@ -49,5 +35,5 @@ headers["HEADER_KEY"] = "HEADER_VALUE"
 postData := make(map[string]string)
 postData["PROPERTY_NAME"] = "PROPERTY_VALUE"
 
-response, err := TokenGeneration.GenerateToken(clientId, clientSecret, headers, postData, nil)
+response, err := TokenGeneration.GenerateToken(context.Background(), clientId, clientSecret, headers, postData)
 ```
