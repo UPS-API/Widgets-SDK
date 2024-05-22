@@ -1,4 +1,4 @@
-package TokenGeneration
+package main
 
 import (
 	b64 "encoding/base64"
@@ -25,7 +25,9 @@ func GenerateToken(clientId string, clientSecret string, headers map[string]stri
 	body.Add("scope", "public")
 
 	for keys := range postData {
-		body.Add(keys, postData[keys])
+		claim := "{\"" + keys + "\":\"" + postData[keys] + "\"}"
+		fmt.Println(claim)
+		body.Add("custom_claims", claim)
 		fmt.Println(body)
 	}
 	encodedData := body.Encode()
@@ -36,7 +38,6 @@ func GenerateToken(clientId string, clientSecret string, headers map[string]stri
 
 	for keys := range headers {
 		r.Header.Set(keys, headers[keys])
-		fmt.Println(r.Header)
 	}
 
 	if err != nil {
@@ -53,7 +54,6 @@ func GenerateToken(clientId string, clientSecret string, headers map[string]stri
 
 	response, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println("Error reading HTTP response body:", err)
 		return "", err
 	}
 
@@ -79,7 +79,6 @@ func GenerateToken(clientId string, clientSecret string, headers map[string]stri
 		} else {
 			return "", errors.New("{\"response\":{\"errors\":[{\"code\":\"DTG009\",\"message\":\"" + string(response) + "\"}]}}")
 		}
-		//panic(res.Status)
 	}
 
 	var result Post
