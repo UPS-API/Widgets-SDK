@@ -42,8 +42,8 @@ package TokenGeneration
 ## Example
 
 ```GO
-clientId := "YOUR_CLIENT_ID";
-clientSecret := "YOUR_CLIENT_SECRET";
+clientId := credentialManager.GetCredential("ClientId");
+clientSecret := credentialManager.GetCredential("ClientSecret");
 headers := make(map[string]string)
 headers["HEADER_KEY"] = "HEADER_VALUE"
 postData := make(map[string]string)
