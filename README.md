@@ -28,8 +28,8 @@ def generateToken(clientId, clientSecret, headers, postData, queryParams)
 ## Example
 
 ```Python
-myId = "YOUR_CLIENT_ID"
-mySecret = "YOUR_CLIENT_SECRET"
+myId = credential_manager.getcredential("ClientId")
+mySecret = credential_manager.getcredential("ClientId")
 headers = {
   { "HEADER_NAME": "HEADER_VALUE" }
 }
