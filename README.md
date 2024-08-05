@@ -42,8 +42,8 @@ public class JwtService
 ## Example
 
 ```Java
-String clientId = "YOUR_CLIENT_ID";
-String clientSecret = "YOUR_CLIENT_SECRET";
+String clientId = credentialManager.getCredential("ClientId");
+String clientSecret = credentialManager.getCredential("ClientSecret");
 Dictionary<string, string> headers = new Hashtable<string, string>();
 headers.put("HEADER_NAME", "HEADER_VALUE");
 private Dictionary<string, string> body = new Hashtable<string, string>();
