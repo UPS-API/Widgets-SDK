@@ -41,8 +41,8 @@ public class GetToken
 ## Example
 
 ```C#
-private string clientId = "YOUR_CLIENT_ID";
-private string clientSecret = "YOUR_CLIENT_SECRET";
+string clientId = CredentialManager.GetCredential("ClientId");
+string clientSecret = CredentialManager.GetCredential("ClientSecret");
 private Dictionary<string, string> headers = new Dictionary<string, string>()
 {
   { "HEADER_NAME", "HEADER_VALUE" }
