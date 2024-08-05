@@ -38,8 +38,8 @@ class AuthTokengenerator
 ## Example
 
 ```Javascript
-clientId: string = "YOUR_CLIENT_ID";
-clientSecret: string = "YOUR_CLIENT_SECRET";
+clientId: string = credentialManager.getCredential("ClientId");
+clientSecret: string = credentialManager.getCredential("ClientSecret");
 
 let headers: Record<string, string> = {};
 headers["HEADER_NAME"] = "HEADER_VALUE";
