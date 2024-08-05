@@ -48,14 +48,14 @@ class UPSSDK
 ## Example
 
 ```PHP
-$clientId = "YOUR_CLIENT_ID";
-$clientSecret = "YOUR_CLIENT_SECRET";
+$clientId = $credentialManager-> getCredential("ClientId");
+$clientSecret = $credentialManager-> getCredential("ClientId");
 $headers = array("HEADER_KEY" => "HEADER_VALUE");
 $postData = array("PROPERTY_NAME" => "PROPERTY_VALUE");
 $tokenService = new UPSSDK();
 
 public function exampleTokenMethod() {
-  $response = $tokenService.generateToken($clientId, $clientSecret, $headers, $postData);
+  $response = $tokenService-> generateToken($clientId, $clientSecret, $headers, $postData);
   echo $response;
 }
 ```
